@@ -10,7 +10,7 @@
         "gitBranch": "master",
         "bitbucketPush":false,
 "scmPollTrigger": "* * * * *",
-        "jenkinsFilePath":".jenkins/jenkinsfiles/shivangi12",
+        "jenkinsFilePath":".jenkins/jenkinsfiles/abc",
         "description": "Jenkins job buid for HPCS-UI",
         "parameters":{
           "string":{
