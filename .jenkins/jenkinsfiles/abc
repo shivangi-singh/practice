@@ -19,7 +19,7 @@ node(nodeName)
             stage('checkout')
             {
                checkout scm
-extensions: [[$class: 'PathRestriction', excludedRegions: dev.java', includedRegions: '']]
+extensions: [[$class: 'PathRestriction', excludedRegions: 'dev.java', includedRegions: '']]
             }
             def envDetails = utility.loadEnvironment(currentEnv)
             mailrecipients = envDetails["emailRecipients"]
