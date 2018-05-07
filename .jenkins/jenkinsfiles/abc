@@ -25,9 +25,9 @@ extensions: [[$class: 'PathRestriction', excludedRegions: 'dev.java', includedRe
             mailrecipients = envDetails["emailRecipients"]
             stage('npm command')
             {
-               bat '''javac Test.java
+               bat '''javac test.java
 
-              java Test'''
+              java test'''
             }
             
             stage('Build Result')
