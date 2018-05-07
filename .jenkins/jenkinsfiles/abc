@@ -18,7 +18,13 @@ node(nodeName)
         {
             stage('checkout')
             {
-               checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: 'dev.java', includedRegions: '']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/shivangi-singh/practice.git']]])
+              checkout([
+\$class: 'GitSCM',
+branches: [[name: '*/master']],
+doGenerateSubmoduleConfigurations: false, 
+extensions: [[\$class: 'PathRestriction', excludedRegions: 'dev.java', includedRegions: '']],
+submoduleCfg: [], 
+userRemoteConfigs: [[url: 'https://github.com/shivangi-singh/practice.git']]])
 
             }
             def envDetails = utility.loadEnvironment(currentEnv)
