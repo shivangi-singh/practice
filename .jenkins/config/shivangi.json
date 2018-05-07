@@ -1,0 +1,31 @@
+{
+"pipeline":
+  {
+    "jobs":
+    {
+      "shivangiProject":
+      {
+        "label":"master",
+        "gitRefspec":"",
+        "gitBranch": "master",
+        "bitbucketPush":false,
+"scmPollTrigger": "* * * * *",
+        "jenkinsFilePath":".jenkins/jenkinsfiles/shivangi12",
+        "description": "Jenkins job buid for HPCS-UI",
+        "parameters":{
+          "string":{
+            "name":"clean install",
+           
+          }
+        },
+"pathRestriction":
+		{
+"excludedRegion":"dev.java"
+}
+		
+      }
+    }
+  },
+  "emailRecipients":"shivangi.singh@intimetec.com"
+
+}
