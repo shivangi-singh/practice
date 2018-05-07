@@ -18,8 +18,8 @@ node(nodeName)
         {
             stage('checkout')
             {
-               checkout scm
-extensions: [[$class: 'PathRestriction', excludedRegions: 'dev.java', includedRegions: '']]
+               checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: 'dev.java', includedRegions: '']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/shivangi-singh/practice.git']]])
+
             }
             def envDetails = utility.loadEnvironment(currentEnv)
             mailrecipients = envDetails["emailRecipients"]
