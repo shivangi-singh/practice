@@ -44,9 +44,6 @@ userRemoteConfigs: [[url: 'https://github.com/shivangi-singh/practice.git']]])
             BuildStatus = 'FAILURE'
             throw any
         }
-        finally
-         {
-            notifyBuildStatus(BuildStatus,currentEnv,mailrecipients)
-         }
+        
 
    }
