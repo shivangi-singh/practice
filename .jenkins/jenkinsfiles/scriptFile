@@ -1,0 +1,43 @@
+@Library('itt_job_dsl')
+import groovy.json.JsonSlurperClassic
+
+def currentEnv= ''
+def nodeName= ''
+def BuildStatus=''
+def BuildMessage=''
+def mailrecipients=''
+node
+{
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: 'dev.java', includedRegions: 'test.java']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/shivangi-singh/practice.git']]])
+    currentEnv = utility.getCurrentEnvironment(env.JOB_NAME,utility.createFilePath("${workspace}/.jenkins/config"))
+    nodeName = utility.getNodeName(currentEnv, env.JOB_NAME)
+}
+node(nodeName)
+   {
+        try
+        {
+            stage('checkout')
+            {
+checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: 'dev.java', includedRegions: 'test.java']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/shivangi-singh/practice.git']]])
+            }
+            def envDetails = utility.loadEnvironment(currentEnv)
+            mailrecipients = envDetails["emailRecipients"]
+            
+            
+
+            stage('Build Result')
+            {
+                BuildStatus1 = 'SUCCESS'
+            }
+        }
+        catch(any)
+        {
+            BuildStatus = 'FAILURE'
+            throw any
+        }
+        finally
+         {
+            notifyBuildStatus(BuildStatus,currentEnv,mailrecipients)
+         }
+
+   }

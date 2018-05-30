@@ -1,0 +1,21 @@
+{
+  "pipeline":
+  {
+    "jobs":
+    {
+      "practice-project":
+      {
+        "label":"master",
+        "gitRefspec":"",
+        "gitBranch": "master",
+		 "scmPollTrigger":"* * * * *",
+        "bitbucketPush":false,
+        "jenkinsFilePath":".jenkins/jenkinsfiles/scriptFile",
+        "description": "Jenkins job buid for practice",
+        
+      }
+    }
+  },
+  
+  "emailRecipients":"shivangi.singh@intimetec.com"
+}
