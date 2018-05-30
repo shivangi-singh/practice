@@ -23,7 +23,11 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
             def envDetails = utility.loadEnvironment(currentEnv)
             mailrecipients = envDetails["emailRecipients"]
             
-            
+            stage('print'){
+echo 'hello'
+
+
+}
 
             stage('Build Result')
             {
